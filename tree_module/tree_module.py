@@ -1,64 +1,46 @@
-import java.util.ArrayList;
-import java.util.List;
+class Folder:
+    def __init__(self, name):
+        self.name = name
+        self.subfolders = []
 
-// Folder node class
-class Folder {
-    String name;
-    List<Folder> subfolders;
+    # Add a subfolder
+    def add_subfolder(self, folder):
+        self.subfolders.append(folder)
 
-    public Folder(String name) {
-        this.name = name;
-        this.subfolders = new ArrayList<>();
-    }
+    # Print the folder hierarchy
+    def print_hierarchy(self, indent=""):
+        print(f"{indent}📁 {self.name}")
+        for sub in self.subfolders:
+            sub.print_hierarchy(indent + "    ")
 
-    // Method to add a subfolder
-    public void addSubfolder(Folder folder) {
-        subfolders.add(folder);
-    }
+# Build the folder structure
+if __name__ == "__main__":
+    # Create folders
+    root = Folder("Root")
 
-    // Method to print the folder hierarchy
-    public void printHierarchy(String indent) {
-        System.out.println(indent + "📁 " + name);
-        for (Folder sub : subfolders) {
-            sub.printHierarchy(indent + "    ");
-        }
-    }
-}
+    documents = Folder("Documents")
+    pictures = Folder("Pictures")
+    music = Folder("Music")
 
-// Main class
-public class FolderHierarchyTree {
-    public static void main(String[] args) {
-        // Create folders
-        Folder root = new Folder("Root");
-        
-        Folder documents = new Folder("Documents");
-        Folder pictures = new Folder("Pictures");
-        Folder music = new Folder("Music");
+    assignments = Folder("Assignments")
+    notes = Folder("Notes")
 
-        Folder assignments = new Folder("Assignments");
-        Folder notes = new Folder("Notes");
+    vacations = Folder("Vacations")
 
-        Folder vacations = new Folder("Vacations");
+    rock = Folder("Rock")
+    jazz = Folder("Jazz")
 
-        Folder rock = new Folder("Rock");
-        Folder jazz = new Folder("Jazz");
+    # Build the hierarchy
+    root.add_subfolder(documents)
+    root.add_subfolder(pictures)
+    root.add_subfolder(music)
 
-        // Build the tree structure
-        root.addSubfolder(documents);
-        root.addSubfolder(pictures);
-        root.addSubfolder(music);
+    documents.add_subfolder(assignments)
+    documents.add_subfolder(notes)
 
-        documents.addSubfolder(assignments);
-        documents.addSubfolder(notes);
+    pictures.add_subfolder(vacations)
 
-        pictures.addSubfolder(vacations);
+    music.add_subfolder(rock)
+    music.add_subf_
 
-        music.addSubfolder(rock);
-        music.addSubfolder(jazz);
-
-        // Print the hierarchy
-        System.out.println("Folder Hierarchy:");
-        root.printHierarchy("");
-    }
-}
 
